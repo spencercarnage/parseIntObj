@@ -7,31 +7,27 @@ _.mixin({
   parseIntObj: function (obj, radix) {
     radix = radix || 10;
 
-    var returnObj = {};
+    var convertedStr;
     var objClone = _.clone(obj);
 
-    var result = _.map(obj, function (value, key) {
-      console.log(value, key);
-
+    _.map(obj, function (value, index) {
       // If the value is not a String, append the original value to it and do
       // nothing else
       if (!_.isString(value)) {
-        returnObj[key] = value;
-        return value;
+        //objClone[index] = value;
+        //return value;
+        return;
       }
 
-      var convertedStr = parseInt(value, radix);
+      convertedStr = parseInt(value, radix);
                                                                                   
       if (typeof convertedStr === 'number' && !_.isNaN(convertedStr)) {       
-        returnObj[key] = convertedStr;
-        return convertedStr;
+        objClone[index] = convertedStr;
       } else {                                                                  
-        returnObj[key] = value;
-        return value;
+        objClone[index] = value;
       }                                                                         
     });
-    //return returnObj;
-    console.log(result);
-    return result;
+
+    return objClone;
   }
 });
