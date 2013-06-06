@@ -4,34 +4,26 @@
  */
 
 _.mixin({
-  parseIntObj: function (obj, radix) {
+  parseIntDeepClone: function (obj, radix) {
     radix = radix || 10;
 
-    var returnObj = {};
-    var objClone = _.clone(obj);
-
-    var result = _.map(obj, function (value, key) {
-      console.log(value, key);
-
+    var convertedStr;
+    var objClone = _.cloneDeep(obj, function (value) {
       // If the value is not a String, append the original value to it and do
       // nothing else
       if (!_.isString(value)) {
-        returnObj[key] = value;
-        return value;
+        return undefined;
       }
 
-      var convertedStr = parseInt(value, radix);
+      convertedStr = parseInt(value, radix);
                                                                                   
       if (typeof convertedStr === 'number' && !_.isNaN(convertedStr)) {       
-        returnObj[key] = convertedStr;
         return convertedStr;
       } else {                                                                  
-        returnObj[key] = value;
-        return value;
+        return undefined;
       }                                                                         
     });
-    //return returnObj;
-    console.log(result);
-    return result;
+
+    return objClone;
   }
 });
