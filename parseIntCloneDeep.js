@@ -1,5 +1,5 @@
 _.mixin({
-  parseIntDeepClone: function (obj, radix) {
+  parseIntCloneDeep: function (obj, radix) {
     radix = radix || 10;
     
     var convertedStr;

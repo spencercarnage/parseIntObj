@@ -9,9 +9,9 @@ test('Convert number strings into proper numbers', function () {
     }
   };
 
-  var convertedObj = _.parseIntDeepClone(originalObj);
+  var convertedObj = _.parseIntCloneDeep(originalObj);
   var originalArr = ['1', '2', 3, ['1']];
-  var convertedArr = _.parseIntDeepClone(originalArr);
+  var convertedArr = _.parseIntCloneDeep(originalArr);
 
   ok(
     typeof convertedObj.test === 'number', 
