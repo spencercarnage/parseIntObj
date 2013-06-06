@@ -1,0 +1,1 @@
+_.mixin({parseIntObj:function(a,b){b=b||10;var c,d=_.clone(a);return _.map(a,function(a,e){_.isString(a)&&(c=parseInt(a,b),d[e]="number"==typeof c&&!_.isNaN(c)&&a.split(".").length<3?c:a)}),d}});
